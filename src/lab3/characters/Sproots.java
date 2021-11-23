@@ -2,8 +2,22 @@ package lab3.characters;
 
 import lab3.enums.Adverbs;
 import lab3.enums.Names;
+import lab3.exception.Sameobject;
 import lab3.interfaces.*;
 public class Sproots extends Julio implements Decide {
+
+    public static int id = 0;
+    {
+        id++;
+        if (id > 1){
+            try {
+                throw new Sameobject("There can't be more than 1 Sproots", id);
+            }catch(Sameobject ex){
+                System.out.println("-----------------------------------------------------------\n" + ex.getMessage());
+                System.out.println("Number of objects: " + ex.getValue()+"\n-----------------------------------------------------------");
+            }
+        }
+    }
 
     public Sproots() {
         super("Sproots");

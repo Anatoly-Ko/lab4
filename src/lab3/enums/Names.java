@@ -2,10 +2,9 @@ package lab3.enums;
 
 
 public enum Names {
-    Crab("Crabs"),
+    //Crab("Crabs"),
     Sproot("Sproots"),
-    Jul("Julio"),
-    M("Mig");
+    Jul("Julio");
     private String NAME;
 
     Names(String str){

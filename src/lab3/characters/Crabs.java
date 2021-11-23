@@ -1,11 +1,30 @@
 package lab3.characters;
+import lab3.enums.Adjective;
 import lab3.enums.Adverbs;
-import lab3.enums.Names;
-import lab3.interfaces.*;
-public class Crabs extends Julio implements surprise, Understand{
 
-     public Crabs(){
+import lab3.enums.Names;
+import lab3.exception.Sameobject;
+import lab3.interfaces.*;
+public class Crabs extends Wherecrabsgo implements surprise, Understand{
+
+    public Crabs(){
         super("Crabs");
+    }
+    public Pool pool = new Pool(Adjective.SWIMMING);
+    public Hotel hotel = new Hotel(Adjective.OWN);
+    public Theatre theatre = new Theatre(Adjective.NIGHT);
+    public Restaurant res = new Restaurant(Adjective.TASTY);
+    public static int id = 0;
+    {
+        id++;
+        if (id > 1){
+            try {
+                throw new Sameobject("There can't be more than 1 Crabs", id);
+            }catch(Sameobject ex){
+                System.out.println("-----------------------------------------------------------\n" + ex.getMessage());
+                System.out.println("Number of objects: " + ex.getValue()+"\n-----------------------------------------------------------");
+            }
+        }
     }
 
 
@@ -18,27 +37,12 @@ public class Crabs extends Julio implements surprise, Understand{
     public void notsurprise() {
         System.out.println(this.getWho() + " not suprised, " + Adverbs.Notatall.getAdverb());
     }
-    @Override
-    public boolean equals(Object obj){
-        if (obj == this){
-            return true;
-        }
-        if(obj == null || obj.getClass() != this.getClass()){
-            return false;
-        }
-        Crabs obj2 = (Crabs) obj;
-        return this.getWho().equals(obj2.getWho()) && this.getWho() != null;
+    public void go(String str) {
+        System.out.println(this.getWho() + ", After that, went to his " + str);
     }
-    @Override
-    public int hashCode(){
-        final int prime = 31;
-        int result = 1;
-        result = prime * result + ((this.getWho() == null) ? 0: this.getWho().hashCode());
-        return result;
+    public void Eat(String str) {
+        System.out.println("In the evening " + this.getWho() + " had a lunch in the " + str);
     }
-    @Override
-    public String toString() {
-        return (Names.Crab.getNAME() + ":");
-    }
+
 }
 

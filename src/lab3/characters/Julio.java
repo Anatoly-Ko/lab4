@@ -1,13 +1,14 @@
 package lab3.characters;
+import lab3.enums.Adjective;
 import lab3.enums.Names;
 public abstract class Julio {
     private String who;
 
-    Julio(String who){
+    public Julio(String who){
         this.who = who;
     }
-    Julio(){
-        this.who = Names.Jul.getNAME();
+    public Julio(){
+        this.who = Adjective.UNKNOWN.getValueOfAdjective();
     }
 
     public String getWho(){
@@ -15,6 +16,7 @@ public abstract class Julio {
     }
 
     public void setWho(String who){
+
         this.who = who;
     }
 
